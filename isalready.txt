@@ -1,0 +1,17 @@
+function isAlreadyExist(){
+    $query = "SELECT *
+        FROM
+            " . $this->table_name . " 
+        WHERE
+            username='".$this->username."'";
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+    // execute query
+    $stmt->execute();
+    if($stmt->rowCount() > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
